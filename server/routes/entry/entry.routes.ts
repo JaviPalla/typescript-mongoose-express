@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
-import { Author } from "../../models/author/model";
+import { Entry } from "../../models/Entry";
 
-export class AuthorRouter {
+export class EntryRouter {
 
     private router: Router = Router();
 
@@ -25,11 +25,11 @@ export class AuthorRouter {
          *       403:
          *         description: Forbidden
          */
-        this.router.get("/author", async(request: Request, response: Response) => {
+        this.router.get("/entries", async(request: Request, response: Response) => {
 
-            const authors = await Author.find({}).exec();
+            const entries = await Entry.find({}).exec();
             
-            response.json(authors)
+            response.json(entries)
         });
 
         /**
@@ -50,9 +50,9 @@ export class AuthorRouter {
          *       403:
          *         description: Forbidden
          */
-        this.router.post("/author", async(request: Request, response: Response) => {
+        this.router.post("/entries", async(request: Request, response: Response) => {
 
-            const author = await Author.create(request.body);
+            const author = await Entry.create(request.body);
 
             response.status(200).json(author);
         });

@@ -9,14 +9,14 @@ if (process.env.NODE_ENV === "testing") {
   mockgoose.helper.setDbVersion("3.4.3");
 
   mockgoose.prepareStorage().then((): void => {
-    mongoose.connect("mongodb://example.com:23400/TestingDB", {
+    mongoose.connect("mongodb://192.168.1.33/dev-busy-day", {
       useMongoClient: true,
     });
   });
 
 } else {
 
-  mongoose.connect("mongodb://127.0.0.1:27021/typescript_mongoose", {
+  mongoose.connect("mongodb://192.168.1.33/dev-busy-day", {
     useMongoClient: true,
   });
 
